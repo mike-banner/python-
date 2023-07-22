@@ -10,21 +10,31 @@
 """
 print("******************* Programe pour convertir les cm en pouces et inversement ******************\n")
 
+"""
+conversion de l'unité choisie 1 a l'unité choisié 2:
+"""
+
 
 def choice_conv(unit1, unit2, facteur):
-    val_entry = input(f"conversion de {unit1} vers {unit2} donnez une valeur : ")
+    val_entry = input(f"conversion de {unit1} vers {unit2} donnez une valeur (ou x pour exit): ")
+    if val_entry == "x":
+        print("fin du programme")
+        return True
     val_float = float(val_entry)
     val_convert = round(val_float * facteur, 2)
     print(f"la conversion de {val_float} {unit1} est : {val_convert} {unit2}")
+    return False
 
 
+#  demarrage du programme du programme
 choice = input("entrer 1 (cm to pouce) entre 2 (pouce to cm): ")
 
-if choice == "1":
-   choice_conv("cm", "pouce", 0.394)
+while True:
+    if choice == "1":
+        if choice_conv("cm", "pouce", 0.394):
+            break
+    if choice == "2":
+        if choice_conv("pouce", "centimetre", 2.54):
+            break
 
-if choice == "2":
-    choice_conv("pouce", "centimetre", 2.54)
-
-print(choice_conv)
 
